@@ -1,38 +1,53 @@
-# UC13-Aula10  
-### Aluno:Igor Pereira de Araújo
+# UC13-Aula 13
+
+### Alunos: Igor Pereira de Araújo e Pedro Rodrigues  
 ### Professor: Thiago Nogueira
-### data:26/11/2024 
-## O que foi feito
-- alterações nos componentes do menu
-- utilização do componente Card para exibir uma lista
-- utilização do componente Card para exibir informações detalhadas 
 
-1. Alterações feitas no MenuComponent.js
+## README: Componente Menu e DishDetail
 
-Esse código que foi modificado da a possibilidade do usuário visualizar um menu de pratos e conseguir selecionar um prato e ver mais detalhes sobre ele utilizando os componentes do React.
+Este projeto adiciona um novo componente chamado DishdetailComponent ao aplicativo React, que exibe os detalhes de um prato selecionado. Abaixo está o passo a passo das modificações realizadas.
 
-![](menucomponentes.png)
+## Objetivos e Resultados
 
-Para o funcionamento desse código foi importado alguns componentes de da biblioteca do **React** e do **Reactstrap** como por exemplo o **Card, CardImg, Cardtext** que vão auxiliar na exibição do projeto. Cada componente desse tem sua função especifica que vai auxiliar na exibição final do projeto, o **Card** é utilizado para criar um cartão com uma estrutura de conteúdo flexível que vai ajudar nos outros componentes, e outro exemplo disso é o **CardImg** que é um componente responsável por exibir uma imagem dentro de um Card, assim como o **Cardtext** que tem a função de exibir textos dentro de um Card.
-E dentro desse projeto tem vários tipos de funções para um bom funcionamento como o **selecteddish** que é responsável por ser nulo, ele representa o estado onde o usuário ainda não selecionou o prato, já o **onDishselect** é chamado a partir do momento que o usuário selecionou um prato e essa informação vai ser armazenada dentro desse componente.
-A partir da seleção do prato o **renderDish** é responsável por renderizar as informações detalhadas de um prato onde ele vai exibir um Card com uma imagem um nome e a descrição do prato.
-Já a função do **props.dishes** é responsável por guardar a lista dos pratos, já o comando map é responsável para integrar a lista e gerar um Card de cada prato.
+1. **Criar DishdetailComponent**: Foi adicionado um novo componente para exibir os detalhes de um prato selecionado.
+2. *Atualizar Visualização*: A visualização do DishdetailComponent foi modificada para utilizar um componente de cartão do Reactstrap.
+3. *Exibir Comentários*: A visualização foi atualizada para exibir a lista de comentários sobre o prato, utilizando uma lista sem estilo do Bootstrap.
 
-2. O que foi feito no dishes.js:
+## Passo a Passo
 
-Basicamente esse arquivo foi desenvolvido para guardar um **array**, no caso a lista dos pratos que vão ser exportados para o menu virtual.
+### Tarefa 1: Adicionar DishdetailComponent
 
-![](dishes.png)
+1. *Criar o Componente*:
+    - Foi criada a função DishDetail em um arquivo chamado DishdetailComponent.js, localizado na pasta components.
+    - A função DishDetail foi exportada para ser importada no arquivo MenuComponent.js.
 
-Essas propriedades foram inseridas para dar características e auxiliar na identificação dos pratos como por exemplo o **id** que vai ser o numero identificador do prato, assim como **name** que se trata do nome do prato, **image** vai ser onde vai ser inserido as imagens do prato, **price** que vai ser inserido o valor do prato, entre outras propriedades.
-E o tipo de date é com base no formato da ISO 8601 onde ele tem um padrão de exibir a data junto com as horas os minutos e os segundos.
+2. *Substituir o Cartão*:
+    - O cartão que exibia o prato selecionado na visualização do MenuComponent foi substituído pelo DishdetailComponent.
+    - As informações do prato selecionado foram passadas como props para o DishdetailComponent.
 
-3. O que foi inserido no arquivo app.js
+3. *Configurar Renderização*:
+    - Foi retornado um div da função render(), utilizando a classe de linha do Bootstrap para posicionar o conteúdo.
+    - Os detalhes do prato foram exibidos em um cartão e a lista de comentários foi apresentada lado a lado para telas médias a extragrandes.
+    - Para telas XS e SM, os elementos foram empilhados verticalmente.
 
-Esse código tem a função de criar uma interface básica para o restaurante.
+### Tarefa 2: Adicionar Componente de Cartão
 
-![](app.js.png)
+1. **Implementar renderDish()**:
+    - Foi adicionada a função renderDish(), que recebe o prato como parâmetro e retorna o código JSX necessário para exibir os detalhes do prato em um cartão do Reactstrap.
+    - O cartão foi configurado com os seguintes elementos:
+        - **Título (CardTitle): Exibe o nome do prato.
+        - **Descrição (CardText): Exibe a descrição do prato.
 
-Basicamente o **const [dishes]** serve para criar um estado para o componente que vai armazenar a lista de pratos .
-O comando **< Menu dishes={dishes} / >** tem basicamente a função de armazenar todos os dados da lista de pratos e tem a função de exibir essas informações na interface.
+2. *Verificação do Prato*:
+    - Foi implementada uma verificação para garantir que o prato fornecido fosse válido (não null) antes de renderizar o cartão:
+        - Se o prato for null, um div vazio é retornado.
+        - Se o prato for válido, a função renderDish() é utilizada para exibir os detalhes no cartão.
+
+### Tarefa 3: Exibir Comentários
+
+1. **Implementar renderComments()**:
+    - Foi adicionada a função renderComments(), que recebe a matriz de comentários como parâmetro e exibe cada comentário.
+    - A classe de lista sem estilo do Bootstrap foi utilizada para formatar a lista de comentários.
+    - Cada comentário foi exibido em duas linhas: uma linha para o comentário e outra para o nome do autor e a data de publicação.
+    - Um cabeçalho h4 com a palavra "Comments" foi adicionado para identificar a seção de comentários.
 

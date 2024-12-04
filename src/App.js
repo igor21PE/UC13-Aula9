@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react'
 import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './components/MenuComponent';
+import MenuComponentes from './components/Menucomponents.js';
 import { DISHES } from './shared/dishes';
 function App() {
  const [dishes] = useState(DISHES);
@@ -13,7 +13,7 @@ function App() {
  <div>Aluno: Fulano de Tal</div>
  </div>
  </Navbar>
- <Menu dishes={dishes} />
+ <MenuComponentes dishes={dishes} />
  </div>
 );
 }
